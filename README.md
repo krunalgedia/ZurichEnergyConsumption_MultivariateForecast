@@ -1,4 +1,4 @@
-# Multi-variate Zurich Energy Consumption Forecast
+# Multi-variate Forecast for multi-seasonal Zurich city's Energy Consumption 
 
 Business Problem:
 
