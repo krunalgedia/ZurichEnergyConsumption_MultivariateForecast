@@ -114,5 +114,7 @@ Feel free to reach out if you have any questions, suggestions, or feedback relat
 - **LinkedIn:** [Krunal Gedia](https://www.linkedin.com/in/krunal-gedia-00188899/)
 
 ## References
+
 [1]: [swissgrid](https://www.swissgrid.ch/en/home/operation/grid-data/generation.html)
+
 [2]: [swiss open data](https://opendata.swiss/de/dataset/klimamessnetz-tageswerte)
