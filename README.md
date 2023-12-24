@@ -2,138 +2,111 @@
 
 Business Problem:
 
-Predicting energy consumption has always been very important for a city to plan its resources for the smooth workflow of the city. The recent events in Europe have made this even more important for the city for it has become more critical for Europe now than ever due to political 
-
-
-In the context of document processing, the manual extraction of relevant information from invoices poses a significant challenge, one that is poised to be automated in the near future. Presently, the verification of traveler and ticket details within invoices is conducted manually, particularly in larger firms dealing with a high volume of invoices on a daily basis. This manual parsing process demands considerable human resources, resulting in prolonged processing times and delays in reimbursement.
+Predicting energy consumption has always been very important for a city to plan its resources for the smooth workflow of the city. The recent events in Europe have made this even more important for European cities. 
 
 Project Objective:
 
-The primary objective of this project is to address the inefficiencies associated with manual invoice parsing. Focusing specifically on SBB train tickets, we aim to implement an automated system that extracts pertinent information from the uploaded PDF documents. By leveraging automation, we intend to streamline the verification process and alleviate the burden on human resources.
-
-Benefits
-
-* Efficiency Gains: Automation reduces manual effort, leading to a significant reduction in processing time.
-* Timely Reimbursement: Streamlining the verification process minimizes delays in reimbursement, enhancing overall financial efficiency.
-* Scalability: As the system is designed to handle a large volume of invoices, it scales seamlessly with the growing needs of larger firms.
-
-Through the successful implementation of this project, we aim to contribute to the optimization of invoice processing workflows, ultimately fostering efficiency, accuracy, and timely reimbursement within larger organizations.
+Use time series forecasting methods, to forecast the energy consumption for the city of Zurich for 2023 up to the end of October using previous years' data. Further, we could leverage even weather data due to its correlation with energy consumption.
 
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Data](#data)
 - [Workflow](#workflow)
+- [Methodology](#methology)
 - [Results](#results)
-- [More ideas](#More-ideas)
 - [Dependencies](#dependencies)
-- [License](#license)
 - [Contact](#contact)
 - [References](#references)
 
 ## Project Overview
 
-The goal of this project is to develop a real-time web application to
-Key Features
-* PDF Document Parsing: Automate the extraction of essential details from SBB train ticket PDFs.
-* Relational Database Integration: Store the extracted information in a relational database for easy retrieval, verification and reimburesemt purpose.
-
-
-## Installation
-
-```bash
-# Example installation command
-pip install -r requirements.txt
-
-# Run Web Application
-streamlit run app.py
-```
+The goal of this project is to develop a reliable forecasting solution for forecasting energy consumption for Zurich city in Switzerland.
 
 ## Data
 
-The data used consists of SBB train tickets for single and extension tickets. The training set consists of just 4 SBB train tickets. All tickets are in PDF form.
+* The energy consumption data for the city of Zurich [1]
+* The weather data for the city of Zurich [2]
 
 ## Workflow
-0. Prepare training data by annotation using the UBIAI tool [1]. This includes drawing bounding boxes and labeling in the BIOES tagging form [2].
-1. Importing data
-2. Observing data
-3. Loading data in appropriate form.
-4. Fine-tuning LayoutML model.
-5. Preparing test set processing, including OCR of prediction documents using Pytesseract and getting the bounding box for all text in the test sample.
-6. Running predictions on the bounding boxes of Pytesseract.
-7. Update the database with relevant NER extracted from the model prediction on the annotated test sample.
 
 * notebooks/SBB_TrainTicketParser.ipynb contains the end-to-end code for Document parsing with database integration.
 * app.py contains the streamlit app code.
 
+## Methogology
+1. Holt-Winters forecasting
+2. SARIMA
+* For 1 and 2, yearly seasonality was removed by subtracting previous years since these methods could handle only one seasonality.
+3. Hybrid model (Linear regression for trend forecast and XGBoost for seasonality forecast)
+4. Prophet
+5. Bidirectional LSTM
+
+* The optimal parameters for 1,2 and 4, 5 methods were found by Grid search CV.
+* The optimal parameters for 3 method were found by Bayesian search CV.
+
+For multivariate forecasting, along with weather data, we also have 1-8 previous lags, target encoding in the form of average energy per month, isWeekend (same or isWeekday), isChristmus, day of the week, the month of the year. For the Prophet, we even used holidays in Switzerland.
+
+
 ## Results
 
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2020.png) |   |
+
+Following are the images of energy consumption for Zurich 2020 onwards. As seen, 2020 has covid impact, thus for training, we use data from 2021 to the end of 2022. And test on 2023 data up to November 6th.
+
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2020.png) | 2020 energy consumption  |
 |-----------------------------|------------------|
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2021.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2022.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2023.png) |   |
 
+Following is the weather data for city of Zurich.
 
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_temp.png) |   |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_temp.png) | Temperature  |
 |-----------------------------|------------------|
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_cloud.png) |   |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_preci.png) |   |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_humidity.png) |   |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_cloud.png) | Cloud cover  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_preci.png) | Precipitation |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_humidity.png) | Relative Humidity  |
 
 
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/Holt_Winters.png) |  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/Holt_Winters.png) | Holt Winters |
 |-----------------------------|------------------|
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/sarima.png) |   |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR.png)|  |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/XGBoost.png)|  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/sarima.png) | SARIMA |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR.png)
+| Linear Regression (for trend) | 
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/XGBoost.png)| Linear + XGBoost Regression (trend+seasonality)  |
+
 
 | ![Image 1](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR_imp.png) | ![Image 2](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/xgboost_imp.png)
 --- | --- 
-Opening page | Testing ... 
+Feature importance for Linear Regression forecast (trend) | Feature importance for Linear XGBoost forecast (seasonality)
 
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/prophet.png)|  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/prophet.png)| Prophet |
 |-----------------------------|------------------|
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm.png)|  |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm_ci%20(1).png)| |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm.png)| BiLSTM |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm_ci%20(1).png)| BiSTLM (with 90% CI)|
 
-We fine-tuned using Facebook/Meta's LayoutLM (which utilizes BERT as the backbone and adds two new input embeddings: 2-D position embedding and image embedding) [3]. The model was imported from the Hugging Face library [4] with end-to-end code implemented in PyTorch. We leveraged the tokenizer provided by the library itself. For the test case, we perform the OCR using Pytesseract.
+Following is the table with the results:  
 
-With just 4 SBB train tickets we can achieve an average F1 score of 0.81.   
+| method                                          |       r2 |         mse |    mae |forecasting |
+|:------------------------------------------------|---------:|------------:|-------:|-----------:|
+| Holt Winters ES                                 | 0.561794 | 2.01073e+11 | 343770 |  Univariate|
+| SARIMA                                          | 0.656569 | 1.57585e+11 | 285656 |  Univariate|
+| Linear Regression (trend)                       | 0.730851 | 1.235e+11   | 257814 |Multivariate|
+| Linear + XGboost Regression (trend+seasonality) | 0.839059 | 7.38485e+10 | 195714 |Multivariate|
+| Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Multivariate|
+| BiLSTM                                          | 0.845019 | 7.13089e+10 | 199810 |Multivariate|
 
-| Epoch | Average Precision | Average Recall | Average F1 | Average Accuracy |
-|--------:|------------:|---------:|-----:|-----------:|
-|     145 |        0.89 |     0.77 | 0.82 |       0.9  |
-|     146 |        0.9  |     0.79 | 0.84 |       0.9  |
-|     147 |        0.86 |     0.77 | 0.81 |       0.89 |
-|     148 |        0.87 |     0.78 | 0.82 |       0.9  |
-|     149 |        0.86 |     0.77 | 0.81 |       0.89 |
-
-The web application serves demo:
-![Image 1](https://github.com/krunalgedia/SBB_TrainTicketParser/blob/main/images_app/sample.gif) | ![Image 2](https://github.com/krunalgedia/SBB_TrainTicketParser/blob/main/images_app/test1.gif)
---- | --- 
-Opening page | Testing ... 
-
-Once the user uploads the image, the document gets parsed and the information from the document gets updated in the relational database which can be used to verify the traveler's info and also to automate the travel cost-processing task.
-
-
-## More ideas
-
-Instead of using OCR from the UBIAI tool, it best is to use pyteserract or same OCR tool for train and test set. Further, with Document AI being developed at a rapid pace, it would be worthwhile to test newer multimodal models which hopefully either provide a new solution for not using OCR or inbuilt OCR since it is important to be consistent in preprocessing train and test set for best results.
-
-Also, train on at least >50 tickets, since this was just a small test case to see how well the model can work.
+**As seen, both  MAE of the Hybrid model (LR+XGBoost) is the best, while r2 of BiLSTM is the best.**
 
 ## Dependencies
 
-This project uses the following dependencies:
-
-- **Python:** 3.10.12/3.9.18 
-- **PyTorch:** 2.1.0+cu121/2.1.1+cpu
-- **Streamlit:** 1.28.2 
-
-- [SBB ticket parser model on Hugging Face](https://huggingface.co/KgModel/sbb_ticket_parser_LayoutLM)
+- statsmodels version: 0.14.1
+- plotly version: 5.15.0
+- ppscore version: 1.3.0
+- category_encoders version: 2.6.3
+- xgboost version: 2.0.2
+- scikit-optimize version: 0.9.0
+- prophet version: 1.1.5
+- python version: 3.10.12
   
 ## Contact
 
@@ -142,12 +115,5 @@ Feel free to reach out if you have any questions, suggestions, or feedback relat
 - **LinkedIn:** [Krunal Gedia](https://www.linkedin.com/in/krunal-gedia-00188899/)
 
 ## References
-[1]: UBIAI annotation tool: [UBIAI](https://app.ubiai.tools/Projects).
-
-[2]: Named Entity Recognition, Vijay Krishnan and Vignesh Ganapathy: [NER](http://cs229.stanford.edu/proj2005/KrishnanGanapathy-NamedEntityRecognition.pdf) 
-
-[3]: LayoutLM: Pre-training of Text and Layout for Document Image Understanding: [LayoutLM] (https://arxiv.org/abs/1912.13318)
-
-[4]: [Huggingface LayoutLM] (https://huggingface.co/docs/transformers/model_doc/layoutlm)
-
-
+[1]: [swissgrid](https://www.swissgrid.ch/en/home/operation/grid-data/generation.html)
+[2]: [swiss open data](https://opendata.swiss/de/dataset/klimamessnetz-tageswerte)
