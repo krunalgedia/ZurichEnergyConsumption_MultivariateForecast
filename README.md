@@ -30,8 +30,8 @@ The goal of this project is to develop a reliable forecasting solution for forec
 
 ## Workflow
 
-* notebooks/SBB_TrainTicketParser.ipynb contains the end-to-end code for Document parsing with database integration.
-* app.py contains the streamlit app code.
+* Swiss_energy_forecast.ipynb contains the end-to-end code for Document parsing with database integration.
+* images_app contains images of README.md
 
 ## Methogology
 1. Holt-Winters forecasting
