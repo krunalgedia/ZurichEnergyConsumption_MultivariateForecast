@@ -94,7 +94,7 @@ Following is the table with the results:
 | Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Multivariate|
 | BiLSTM                                          | 0.845019 | 7.13089e+10 | 199810 |Multivariate|
 
-**As seen, both  MAE of the Hybrid model (LR+XGBoost) is the best, while r2 of BiLSTM is the best.**
+**As seen, MAE of the Hybrid model (LR+XGBoost) is the best, while r2 of BiLSTM is the best.**
 
 ## Dependencies
 
