@@ -71,15 +71,18 @@ The data used consists of SBB train tickets for single and extension tickets. Th
 ## Results
 
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2020.png) |   |
+|-----------------------------|------------------|
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2021.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2022.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2023.png) |   |
 
 
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_temp.png) |   |
+|-----------------------------|------------------|
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_cloud.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_preci.png) |   |
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/weather_humidity.png) |   |
+
 
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/Holt_Winters.png) |  |
 |-----------------------------|------------------|
