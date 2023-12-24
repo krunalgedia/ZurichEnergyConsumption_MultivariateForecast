@@ -54,9 +54,9 @@ Following are the images of energy consumption for Zurich 2020 onwards. As seen,
 
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2020.png) | 2020 energy consumption  |
 |-----------------------------|------------------|
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2021.png) |   |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2022.png) |   |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2023.png) |   |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2021.png) | 2021 energy consumption  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2022.png) | 2022 energy consumption  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/energy_2023.png) | 2023 energy consumption  |
 
 Following is the weather data for city of Zurich.
 
@@ -70,8 +70,7 @@ Following is the weather data for city of Zurich.
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/Holt_Winters.png) | Holt Winters |
 |-----------------------------|------------------|
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/sarima.png) | SARIMA |
-| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR.png)
-| Linear Regression (for trend) | 
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR.png)| Linear Regression (for trend) | 
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/XGBoost.png)| Linear + XGBoost Regression (trend+seasonality)  |
 
 
