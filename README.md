@@ -94,7 +94,7 @@ Opening page | Testing ...
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/prophet.png)|  |
 |-----------------------------|------------------|
 | ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm.png)|  |
-| ![Image]()| |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm_ci.png)| |
 
 We fine-tuned using Facebook/Meta's LayoutLM (which utilizes BERT as the backbone and adds two new input embeddings: 2-D position embedding and image embedding) [3]. The model was imported from the Hugging Face library [4] with end-to-end code implemented in PyTorch. We leveraged the tokenizer provided by the library itself. For the test case, we perform the OCR using Pytesseract.
 
