@@ -1,9 +1,10 @@
 # Multi-variate Zurich Energy Consumption Forecast
-# SBB_TrainTicketParser
 
 Business Problem:
 
-Predicting energy consumption has always been very important for a city to plan its resources in advance for smooth workflow of the city. The recent events in Erope has made this even more important for the city for has become very critical for Europe now that ever due to potical
+Predicting energy consumption has always been very important for a city to plan its resources for the smooth workflow of the city. The recent events in Europe have made this even more important for the city for it has become more critical for Europe now than ever due to political 
+
+
 In the context of document processing, the manual extraction of relevant information from invoices poses a significant challenge, one that is poised to be automated in the near future. Presently, the verification of traveler and ticket details within invoices is conducted manually, particularly in larger firms dealing with a high volume of invoices on a daily basis. This manual parsing process demands considerable human resources, resulting in prolonged processing times and delays in reimbursement.
 
 Project Objective:
@@ -68,6 +69,16 @@ The data used consists of SBB train tickets for single and extension tickets. Th
 * app.py contains the streamlit app code.
 
 ## Results
+
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/Holt_Winters.png) |  |
+|-----------------------------|------------------|
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/sarima.png) |   |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR.png)|  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/XGBoost.png)|  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/LR_imp.png)| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/xgboost_imp.png) |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/prophet.png)|  |
+| ![Image](https://github.com/krunalgedia/ZurichEnergyConsumption_MultivariateForecast/blob/main/images_app/lstm.png)|  |
+| ![Image]() | |
 
 We fine-tuned using Facebook/Meta's LayoutLM (which utilizes BERT as the backbone and adds two new input embeddings: 2-D position embedding and image embedding) [3]. The model was imported from the Hugging Face library [4] with end-to-end code implemented in PyTorch. We leveraged the tokenizer provided by the library itself. For the test case, we perform the OCR using Pytesseract.
 
