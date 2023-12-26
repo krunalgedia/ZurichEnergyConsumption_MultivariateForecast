@@ -91,11 +91,11 @@ Following is the table with the results:
 | Holt Winters ES                                 | 0.561794 | 2.01073e+11 | 343770 |  Univariate|
 | SARIMA                                          | 0.656569 | 1.57585e+11 | 285656 |  Univariate|
 | Linear Regression (trend)                       | 0.730851 | 1.235e+11   | 257814 |Multivariate|
-| Linear + XGboost Regression (trend+seasonality) | 0.839059 | 7.38485e+10 | 195714 |Multivariate|
+| Linear + XGboost (Hybrid) Regression (trend+seasonality) | 0.839059 | 7.38485e+10 | 195714 |Multivariate|
 | Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Univariate (with holidays)|
 | BiLSTM                                          | 0.845019 | 7.13089e+10 | 199810 |Multivariate|
 
-**As seen, MAE of the Hybrid model (LR+XGBoost) is the best, while r2 of BiLSTM is the best.**
+**As seen, based on MAE or r2, both Hybrid model (LR+XGBoost) and BiLSTM are comparable and better than others. **
 
 ## Dependencies
 
