@@ -43,6 +43,7 @@ The goal of this project is to develop a reliable forecasting solution for forec
 
 * The optimal parameters for 1,2 and 4, 5 methods were found by Grid search CV.
 * The optimal parameters for 3 method were found by Bayesian search CV.
+* Optimized on RMSE, AIC metrics
 
 For multivariate forecasting, along with weather data, we also have 1-8 previous lags, target encoding in the form of average energy per month, isWeekend (same or isWeekday), isChristmus, day of the week, the month of the year. For the Prophet, we even used holidays in Switzerland.
 
@@ -91,7 +92,7 @@ Following is the table with the results:
 | SARIMA                                          | 0.656569 | 1.57585e+11 | 285656 |  Univariate|
 | Linear Regression (trend)                       | 0.730851 | 1.235e+11   | 257814 |Multivariate|
 | Linear + XGboost Regression (trend+seasonality) | 0.839059 | 7.38485e+10 | 195714 |Multivariate|
-| Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Multivariate|
+| Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Univariate (with holidays)|
 | BiLSTM                                          | 0.845019 | 7.13089e+10 | 199810 |Multivariate|
 
 **As seen, MAE of the Hybrid model (LR+XGBoost) is the best, while r2 of BiLSTM is the best.**
