@@ -116,6 +116,6 @@ Feel free to reach out if you have any questions, suggestions, or feedback relat
 
 ## References
 
-1 : [swissgrid](https://www.swissgrid.ch/en/home/operation/grid-data/generation.html)
+[1]: Energy data for Zurich city: [swissgrid](https://www.swissgrid.ch/en/home/operation/grid-data/generation.html)
 
-[2]: [swiss open data](https://opendata.swiss/de/dataset/klimamessnetz-tageswerte)
+[2]: Weather data for Zurich city: [swiss open data](https://opendata.swiss/de/dataset/klimamessnetz-tageswerte)
