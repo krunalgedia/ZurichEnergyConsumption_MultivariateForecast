@@ -95,7 +95,7 @@ Following is the table with the results:
 | Prophet                                         | 0.706717 | 1.34575e+11 | 283883 |Univariate (with holidays)|
 | BiLSTM                                          | 0.845019 | 7.13089e+10 | 199810 |Multivariate|
 
-**As seen, based on MAE or r2, both Hybrid model (LR+XGBoost) and BiLSTM are comparable and better than others. **
+**As seen, based on MAE or r2, both Hybrid model (LR+XGBoost) and BiLSTM are comparable and better than others.**
 
 ## Dependencies
 
